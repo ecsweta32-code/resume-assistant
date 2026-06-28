@@ -15,7 +15,8 @@ from src.state import ScreeningState  # Now this will import perfectly!
 load_dotenv()
 
 # Initialize the modern Gemini Client (Cleaned up the duplicate client call)
-client = genai.Client()
+import streamlit as st
+client = genai.Client(api_key=st.secrets["GOOGLE_API_KEY"])
 MODEL_NAME = "gemini-2.5-flash"
 
 def extract_and_retrieve_node(state: ScreeningState) -> dict:
